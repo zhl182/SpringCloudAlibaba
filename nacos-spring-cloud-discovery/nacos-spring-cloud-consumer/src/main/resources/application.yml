@@ -1,0 +1,26 @@
+server:
+  port: 8060
+spring:
+  application:
+    name: service-consumer
+  cloud:
+    #nacos相关配置
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        cluster-name: BJ
+        metadata:
+          version: v1
+    #sentinel相关配置
+    sentinel:
+      transport:
+        #配置sentinel控制台地址,指定控制台后客户端会自动向该地址发送心跳包
+        dashboard: localhost:8080
+        #指定心跳包中本机的ip 若不指定则通过 HostNameUtil 解析；该配置项多用于多网卡环境
+        client-ip: localhost
+        #本地启动 HTTP API Server 的端口号 默认8719
+        port: 8719
+#feign开启sentinel支持
+feign:
+  sentinel:
+    enabled: true
