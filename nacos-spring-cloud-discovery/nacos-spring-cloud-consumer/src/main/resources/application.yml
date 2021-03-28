@@ -20,7 +20,11 @@ spring:
         client-ip: localhost
         #本地启动 HTTP API Server 的端口号 默认8719
         port: 8719
-#feign开启sentinel支持
+    #配置这个,那么服务将不作为服务提供者对外提供服务
+#    service-registry:
+#      auto-registration:
+#        enabled: false
+#feign开启sentinel支持,实际上就是@FeignClient的接口生成的代理类处理由FeignInvocationHandler变成SentinelInvocationHandler
 feign:
   sentinel:
     enabled: true
